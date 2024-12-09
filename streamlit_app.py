@@ -4,7 +4,6 @@ from transformers import pipeline
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from textblob import TextBlob
 
-# Load Sentiment Analysis Models
 @st.cache_resource
 def load_transformers_pipeline():
     return pipeline("sentiment-analysis", model = "siebert/sentiment-roberta-large-english")
