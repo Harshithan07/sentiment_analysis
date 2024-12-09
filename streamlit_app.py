@@ -15,8 +15,6 @@ def load_transformers_pipeline():
     return pipeline("sentiment-analysis", model="siebert/sentiment-roberta-large-english")
 
 @st.cache_resource
-def load_bert_pipeline():
-    return pipeline("sentiment-analysis", model="bert-base-uncased")
 
 @st.cache_resource
 def load_vader_analyzer():
@@ -25,10 +23,6 @@ def load_vader_analyzer():
 @st.cache_resource
 def load_nltk_analyzer():
     return NLTKAnalyzer()
-
-@st.cache_resource
-def load_summarization_model():
-    return pipeline("text2text-generation", model="google/pegasus-xsum")
 
 
 transformers_analyzer = load_transformers_pipeline()
