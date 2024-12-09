@@ -78,41 +78,41 @@ def model_summary():
     """
     return summary
 
-def generate_product_overview(df):
-    # Extract insights
-    positive_count = (df["Transformers Sentiment"] == "😊 Positive").sum()
-    negative_count = (df["Transformers Sentiment"] == "😠 Negative").sum()
-    neutral_count = (df["Transformers Sentiment"] == "😐 Neutral").sum()
-    total_reviews = len(df)
+# def generate_product_overview(df):
+#     # Extract insights
+#     positive_count = (df["Transformers Sentiment"] == "😊 Positive").sum()
+#     negative_count = (df["Transformers Sentiment"] == "😠 Negative").sum()
+#     neutral_count = (df["Transformers Sentiment"] == "😐 Neutral").sum()
+#     total_reviews = len(df)
 
-    top_reviews = df["review"].value_counts().head(5).to_dict()
-    top_positive = df[df["Transformers Sentiment"] == "😊 Positive"]["review"].head(3).tolist()
-    top_negative = df[df["Transformers Sentiment"] == "😠 Negative"]["review"].head(3).tolist()
-    positive_aspects = ", ".join(top_positive) if top_positive else "N/A"
-    negative_aspects = ", ".join(top_negative) if top_negative else "N/A"
+#     top_reviews = df["review"].value_counts().head(5).to_dict()
+#     top_positive = df[df["Transformers Sentiment"] == "😊 Positive"]["review"].head(3).tolist()
+#     top_negative = df[df["Transformers Sentiment"] == "😠 Negative"]["review"].head(3).tolist()
+#     positive_aspects = ", ".join(top_positive) if top_positive else "N/A"
+#     negative_aspects = ", ".join(top_negative) if top_negative else "N/A"
 
-    summary_input = (
-        f"The product received mixed reviews based on user feedback. "
-        f"Out of a total of {total_reviews} reviews:\n"
-        f"- {positive_count} users were satisfied and left positive feedback.\n"
-        f"- {negative_count} users expressed dissatisfaction with the product.\n"
-        f"- {neutral_count} users had a neutral opinion.\n\n"
-        "Key themes and insights from the reviews include:\n"
-        f"1. Positive Highlights: Customers frequently praised the product for its {positive_aspects}.\n"
-        f"2. Negative Feedback: Common issues raised by users include {negative_aspects}.\n"
-        "3. Neutral Opinions: Some users mentioned that the product was neither exceptional nor poor.\n\n"
-        "Based on the trends:\n"
-        "- The overall sentiment indicates a mixed response leaning towards positive.\n"
-        "- Users recommend the product for daily use and occasional tasks.\n"
-        "- To improve satisfaction, consider addressing the issues related to delayed delivery and durability.\n\n"
-        "Here are a few notable review excerpts:\n"
-    )
-    for review, count in top_reviews.items():
-        summary_input += f"- \"{review}\" (mentioned {count} times)\n"
+#     summary_input = (
+#         f"The product received mixed reviews based on user feedback. "
+#         f"Out of a total of {total_reviews} reviews:\n"
+#         f"- {positive_count} users were satisfied and left positive feedback.\n"
+#         f"- {negative_count} users expressed dissatisfaction with the product.\n"
+#         f"- {neutral_count} users had a neutral opinion.\n\n"
+#         "Key themes and insights from the reviews include:\n"
+#         f"1. Positive Highlights: Customers frequently praised the product for its {positive_aspects}.\n"
+#         f"2. Negative Feedback: Common issues raised by users include {negative_aspects}.\n"
+#         "3. Neutral Opinions: Some users mentioned that the product was neither exceptional nor poor.\n\n"
+#         "Based on the trends:\n"
+#         "- The overall sentiment indicates a mixed response leaning towards positive.\n"
+#         "- Users recommend the product for daily use and occasional tasks.\n"
+#         "- To improve satisfaction, consider addressing the issues related to delayed delivery and durability.\n\n"
+#         "Here are a few notable review excerpts:\n"
+#     )
+#     for review, count in top_reviews.items():
+#         summary_input += f"- \"{review}\" (mentioned {count} times)\n"
 
-    # Generate summary
-    output = summarizer(summary_input, max_length=150, min_length=50, do_sample=True)
-    return output[0]["generated_text"]
+#     # Generate summary
+#     output = summarizer(summary_input, max_length=150, min_length=50, do_sample=True)
+#     return output[0]["generated_text"]
 
 # Streamlit App Title
 st.title("Sentiment Analysis App")
@@ -217,10 +217,10 @@ elif input_option == "Upload Excel File":
                 ax.set_ylabel("Percentage")
                 st.pyplot(fig)
 
-                # Product Overview and Recommendations
-                st.subheader("Product Overview and Recommendations")
-                overview = generate_product_overview(df)
-                st.write(overview)
+                # # Product Overview and Recommendations
+                # st.subheader("Product Overview and Recommendations")
+                # overview = generate_product_overview(df)
+                # st.write(overview)
 
                 # Download button for results
                 def convert_df_to_excel(dataframe):
