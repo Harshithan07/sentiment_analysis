@@ -1,1 +1,7 @@
+transformers
+torch
 streamlit
+pandas
+openpyxl
+textblob
+vaderSentiment
