@@ -5,3 +5,5 @@ pandas
 openpyxl
 textblob
 vaderSentiment
+nltk
+matplotlib
