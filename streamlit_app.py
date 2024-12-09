@@ -15,6 +15,8 @@ def load_transformers_pipeline():
     return pipeline("sentiment-analysis", model="siebert/sentiment-roberta-large-english")
 
 @st.cache_resource
+def load_bert_pipeline():
+    return pipeline("sentiment-analysis", model="bert-base-uncased")
 
 @st.cache_resource
 def load_vader_analyzer():
@@ -23,6 +25,10 @@ def load_vader_analyzer():
 @st.cache_resource
 def load_nltk_analyzer():
     return NLTKAnalyzer()
+
+@st.cache_resource
+def load_summarization_model():
+    return pipeline("text2text-generation", model="google/pegasus-xsum")
 
 
 transformers_analyzer = load_transformers_pipeline()
@@ -165,17 +171,17 @@ elif input_option == "Upload Excel File":
                 # Add model summary
                 st.write(model_summary())
 
-                # Sentiment Distribution Charts
-                st.subheader("Sentiment Distribution Across Models")
-                for model in ["Transformers Sentiment"]:
-                    sentiment_counts = df[model].value_counts()
-                    st.write(f"**{model} Distribution**")
-                    fig, ax = plt.subplots()
-                    sentiment_counts.plot(kind="bar", ax=ax)
-                    ax.set_title(f"{model} Sentiment Distribution")
-                    ax.set_xlabel("Sentiment")
-                    ax.set_ylabel("Count")
-                    st.pyplot(fig)
+                # # Sentiment Distribution Charts
+                # st.subheader("Sentiment Distribution Across Models")
+                # for model in ["Transformers Sentiment"]:
+                #     sentiment_counts = df[model].value_counts()
+                #     st.write(f"**{model} Distribution**")
+                #     fig, ax = plt.subplots()
+                #     sentiment_counts.plot(kind="bar", ax=ax)
+                #     ax.set_title(f"{model} Sentiment Distribution")
+                #     ax.set_xlabel("Sentiment")
+                #     ax.set_ylabel("Count")
+                #     st.pyplot(fig)
 
                 # Sentiment Trends Over Time
                 if 'timestamp' in df.columns:
