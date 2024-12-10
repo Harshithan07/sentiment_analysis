@@ -5,6 +5,7 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from textblob import TextBlob
 from nltk.sentiment import SentimentIntensityAnalyzer as NLTKAnalyzer
 import matplotlib.pyplot as plt
+import io
 import nltk
 nltk.download('vader_lexicon')
 
@@ -228,8 +229,10 @@ elif input_option == "Upload Excel File":
 
                 # Download button for results
                 def convert_df_to_excel(dataframe):
-                    return dataframe.to_excel(index=False, engine='openpyxl')
-
+                    output = io.BytesIO()
+                    with pd.ExcelWriter(output, engine='openpyxl') as writer:
+                    dataframe.to_excel(writer, index=False)
+                    return output.getvalue()
                 st.download_button(
                     label="Download Results as Excel",
                     data=convert_df_to_excel(df),
