@@ -231,7 +231,7 @@ elif input_option == "Upload Excel File":
                 def convert_df_to_excel(dataframe):
                     output = io.BytesIO()
                     with pd.ExcelWriter(output, engine='openpyxl') as writer:
-                    dataframe.to_excel(writer, index=False)
+                         dataframe.to_excel(writer, index=False)
                     return output.getvalue()
                 st.download_button(
                     label="Download Results as Excel",
