@@ -6,5 +6,4 @@ openpyxl
 textblob
 vaderSentiment
 nltk
-io
 matplotlib
