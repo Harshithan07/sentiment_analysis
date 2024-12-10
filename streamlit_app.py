@@ -41,23 +41,27 @@ nltk_analyzer = load_nltk_analyzer()
 # Helper functions for VADER, TextBlob, NLTK, and BERT
 def analyze_with_vader(text):
     scores = vader_analyzer.polarity_scores(text)
-    return "POSITIVE" if scores["compound"] > 0 else "NEGATIVE" if scores["compound"] < 0 else "NEUTRAL"
+    if scores["compound"] > 0:
+        return "POSITIVE"
+    elif scores["compound"] <= 0:  # Treat neutral and negative compound scores as Negative
+        return "NEGATIVE"
 
 def analyze_with_textblob(text):
     polarity = TextBlob(text).sentiment.polarity
-    return "POSITIVE" if polarity > 0 else "NEGATIVE" if polarity < 0 else "NEUTRAL"
+    return "POSITIVE" if polarity > 0 else "NEGATIVE"  # Treat neutral polarity as Negative
 
 def analyze_with_nltk(text):
     scores = nltk_analyzer.polarity_scores(text)
-    return "POSITIVE" if scores["compound"] > 0 else "NEGATIVE" if scores["compound"] < 0 else "NEUTRAL"
+    if scores["compound"] > 0:
+        return "POSITIVE"
+    elif scores["compound"] <= 0:  # Treat neutral and negative compound scores as Negative
+        return "NEGATIVE"
 
 def sentiment_to_emoji(sentiment):
     if sentiment == "POSITIVE":
         return "😊 Positive"
     elif sentiment == "NEGATIVE":
         return "😠 Negative"
-    else:
-        return "😐 Neutral"
 
 def model_summary():
     summary = """
