@@ -203,23 +203,23 @@ elif input_option == "Upload Excel File":
                 else:
                     st.info("No 'timestamp' column found for sentiment trends over time.")
 
-                # Model Comparisons: Percentage Distribution
-                st.subheader("Model Comparisons: Percentage Distribution")
-                model_comparisons = {}
-                for model in ["Transformers Sentiment", "VADER Sentiment", "TextBlob Sentiment", "NLTK Sentiment"]:
-                    sentiment_counts = df[model].value_counts(normalize=True) * 100
-                    model_comparisons[model] = sentiment_counts
+                # # Model Comparisons: Percentage Distribution
+                # st.subheader("Model Comparisons: Percentage Distribution")
+                # model_comparisons = {}
+                # for model in ["Transformers Sentiment", "VADER Sentiment", "TextBlob Sentiment", "NLTK Sentiment"]:
+                #     sentiment_counts = df[model].value_counts(normalize=True) * 100
+                #     model_comparisons[model] = sentiment_counts
 
-                comparison_df = pd.DataFrame(model_comparisons).fillna(0)
-                st.write("Percentage Sentiment Distribution Across Models")
-                st.dataframe(comparison_df)
+                # comparison_df = pd.DataFrame(model_comparisons).fillna(0)
+                # st.write("Percentage Sentiment Distribution Across Models")
+                # st.dataframe(comparison_df)
 
-                fig, ax = plt.subplots(figsize=(10, 6))
-                comparison_df.plot(kind='bar', ax=ax)
-                ax.set_title("Percentage Distribution Across Models")
-                ax.set_xlabel("Sentiment")
-                ax.set_ylabel("Percentage")
-                st.pyplot(fig)
+                # fig, ax = plt.subplots(figsize=(10, 6))
+                # comparison_df.plot(kind='bar', ax=ax)
+                # ax.set_title("Percentage Distribution Across Models")
+                # ax.set_xlabel("Sentiment")
+                # ax.set_ylabel("Percentage")
+                # st.pyplot(fig)
 
                 # # Product Overview and Recommendations
                 # st.subheader("Product Overview and Recommendations")
