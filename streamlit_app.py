@@ -188,20 +188,20 @@ elif input_option == "Upload Excel File":
                 #     st.pyplot(fig)
 
                 # Sentiment Trends Over Time
-                if 'timestamp' in df.columns:
-                    st.subheader("Sentiment Trends Over Time (Transformers)")
-                    df['timestamp'] = pd.to_datetime(df['timestamp'])  # Ensure timestamps are in datetime format
-                    sentiment_over_time = df.groupby([df['timestamp'].dt.date, 'Transformers Sentiment']).size().unstack(fill_value=0)
+                # if 'timestamp' in df.columns:
+                #     st.subheader("Sentiment Trends Over Time (Transformers)")
+                #     df['timestamp'] = pd.to_datetime(df['timestamp'])  # Ensure timestamps are in datetime format
+                #     sentiment_over_time = df.groupby([df['timestamp'].dt.date, 'Transformers Sentiment']).size().unstack(fill_value=0)
 
-                    # Plotting trends over time
-                    fig, ax = plt.subplots(figsize=(10, 6))
-                    sentiment_over_time.plot(ax=ax)
-                    ax.set_title("Sentiment Trends Over Time (Transformers)")
-                    ax.set_xlabel("Date")
-                    ax.set_ylabel("Count")
-                    st.pyplot(fig)
-                else:
-                    st.info("No 'timestamp' column found for sentiment trends over time.")
+                #     # Plotting trends over time
+                #     fig, ax = plt.subplots(figsize=(10, 6))
+                #     sentiment_over_time.plot(ax=ax)
+                #     ax.set_title("Sentiment Trends Over Time (Transformers)")
+                #     ax.set_xlabel("Date")
+                #     ax.set_ylabel("Count")
+                #     st.pyplot(fig)
+                # else:
+                #     st.info("No 'timestamp' column found for sentiment trends over time.")
 
                 # # Model Comparisons: Percentage Distribution
                 # st.subheader("Model Comparisons: Percentage Distribution")
