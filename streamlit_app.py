@@ -35,7 +35,7 @@ transformers_analyzer = load_transformers_pipeline()
 # bert_analyzer = load_bert_pipeline()
 vader_analyzer = load_vader_analyzer()
 nltk_analyzer = load_nltk_analyzer()
-summarizer = load_summarization_model()
+# summarizer = load_summarization_model()
 
 
 # Helper functions for VADER, TextBlob, NLTK, and BERT
