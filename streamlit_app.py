@@ -120,8 +120,17 @@ def model_summary():
 #     return output[0]["generated_text"]
 
 # Streamlit App Title
-st.title("Sentiment Analysis App")
+st.markdown(
+    """
+    <div style="display: flex; align-items: center;">
+        <img src="https://huggingface.co/front/assets/huggingface_logo.svg" alt="Hugging Face Logo" style="width:50px; margin-right: 10px;">
+        <h1 style="margin: 0;">Sentiment Analysis App</h1>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
 st.write("Perform sentiment analysis using Transformers, VADER, TextBlob, and NLTK.")
+
 
 # Sidebar for input options
 st.sidebar.title("Input Options")
