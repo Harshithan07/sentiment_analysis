@@ -129,7 +129,7 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
-st.write("Perform sentiment analysis using Transformers, VADER, TextBlob, and NLTK.")
+st.write("Perform sentiment analysis using Transformers, VADER, TextBlob, and Scikit Learn.")
 
 
 # Sidebar for input options
@@ -152,7 +152,7 @@ if input_option == "Type Text":
             st.write(f"**Transformers Sentiment:** {sentiment_to_emoji(transformers_result)}")
             st.write(f"**VADER Sentiment:** {sentiment_to_emoji(vader_result)}")
             st.write(f"**TextBlob Sentiment:** {sentiment_to_emoji(textblob_result)}")
-            st.write(f"**NLTK Sentiment:** {sentiment_to_emoji(nltk_result)}")
+            st.write(f"**Scikit Learn Sentiment:** {sentiment_to_emoji(nltk_result)}")
 
             st.write(model_summary())
 
