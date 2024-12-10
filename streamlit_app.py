@@ -177,7 +177,7 @@ elif input_option == "Upload Excel File":
                 df["Transformers Sentiment"] = df["review"].apply(lambda x: sentiment_to_emoji(transformers_analyzer(x)[0]["label"]))
                 df["VADER Sentiment"] = df["review"].apply(lambda x: sentiment_to_emoji(analyze_with_vader(x)))
                 df["TextBlob Sentiment"] = df["review"].apply(lambda x: sentiment_to_emoji(analyze_with_textblob(x)))
-                df["NLTK Sentiment"] = df["review"].apply(lambda x: sentiment_to_emoji(analyze_with_nltk(x)))
+                df["Scikit Learn Sentiment"] = df["review"].apply(lambda x: sentiment_to_emoji(analyze_with_nltk(x)))
 
                 st.write("Sentiment Analysis Results:")
                 st.dataframe(df)
